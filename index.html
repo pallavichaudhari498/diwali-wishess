@@ -1,0 +1,586 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Diwali ✨</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background:
+      radial-gradient(ellipse at 50% 35%, #67244f 0%, transparent 55%),
+      linear-gradient(135deg, #10091f, #35102f, #160a27);
+}
+
+/* FULL SCREEN BACKGROUND */
+
+#fireworks {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* STARS */
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(2px 2px at 10% 20%, white, transparent),
+      radial-gradient(2px 2px at 30% 70%, gold, transparent),
+      radial-gradient(2px 2px at 80% 30%, white, transparent),
+      radial-gradient(2px 2px at 65% 85%, gold, transparent);
+    background-size: 180px 180px;
+    animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: .3; }
+    to { opacity: 1; }
+}
+
+/* FLOATING DIYAS */
+
+.diya {
+    position: fixed;
+    font-size: 38px;
+    z-index: 3;
+    filter: drop-shadow(0 0 15px orange);
+    animation: float 3s ease-in-out infinite alternate;
+}
+
+.diya.left {
+    left: 5%;
+    top: 12%;
+}
+
+.diya.right {
+    right: 5%;
+    top: 12%;
+    animation-delay: 1s;
+}
+
+.diya.bottom-left {
+    left: 8%;
+    bottom: 12%;
+    animation-delay: 1.5s;
+}
+
+.diya.bottom-right {
+    right: 8%;
+    bottom: 12%;
+    animation-delay: .5s;
+}
+
+@keyframes float {
+    from { transform: translateY(0) rotate(-5deg); }
+    to { transform: translateY(-20px) rotate(5deg); }
+}
+
+/* RANGOLI DECORATION */
+
+.rangoli {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 3px dotted #ffd36b;
+    background:
+      repeating-conic-gradient(
+        from 0deg,
+        rgba(255,190,70,.18) 0deg 10deg,
+        transparent 10deg 20deg
+      );
+    box-shadow: 0 0 35px rgba(255,180,40,.25);
+    opacity: .7;
+    pointer-events: none;
+}
+
+/* MAIN SCREEN */
+
+.container {
+    position: relative;
+    z-index: 4;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.content {
+    width: 100%;
+    max-width: 850px;
+    text-align: center;
+    padding: 35px 20px;
+    animation: appear 1.2s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.top-label {
+    color: #ffd779;
+    letter-spacing: 7px;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.main-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(65px, 11vw, 110px);
+    color: #ffdf91;
+    text-shadow:
+      0 0 10px #ffae35,
+      0 0 30px #ffae35,
+      0 0 60px #e88b25;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #ffe7d4;
+    margin-bottom: 30px;
+}
+
+.lamp {
+    font-size: 75px;
+    margin: 20px 0;
+    filter: drop-shadow(0 0 20px orange);
+    animation: lampGlow 1.5s infinite alternate;
+}
+
+@keyframes lampGlow {
+    from { filter: drop-shadow(0 0 8px orange); }
+    to { filter: drop-shadow(0 0 30px gold); }
+}
+
+.entry-text {
+    font-size: 17px;
+    color: #ffebc9;
+    margin: 20px 0;
+}
+
+input {
+    width: 90%;
+    max-width: 420px;
+    padding: 17px 22px;
+    border-radius: 40px;
+    border: 1px solid #ffd16a;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+    color: #42152c;
+    background: #fff9ed;
+    box-shadow: 0 0 25px rgba(255,190,50,.2);
+}
+
+input:focus {
+    box-shadow: 0 0 30px rgba(255,200,70,.6);
+}
+
+.hint {
+    color: #ffdaa0;
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+/* WISH SCREEN */
+
+#surprise {
+    display: none;
+    animation: appear 1.5s ease;
+}
+
+.wish-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(55px, 10vw, 90px);
+    color: #ffe09a;
+    text-shadow: 0 0 25px orange;
+    margin: 15px 0;
+}
+
+.personal-name {
+    color: #fff0b5;
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 600;
+    margin: 20px 0;
+    text-shadow: 0 0 18px #ffb52e;
+    overflow-wrap: anywhere;
+}
+
+.wish-message {
+    color: #fff0e2;
+    font-size: 15px;
+    line-height: 2.1;
+    max-width: 650px;
+    margin: 15px auto;
+}
+
+.flower {
+    font-size: 30px;
+    margin: 20px;
+}
+
+.song-info {
+    font-size: 13px;
+    color: #ffda8c;
+    margin-top: 25px;
+    letter-spacing: 1px;
+}
+
+.footer {
+    margin-top: 35px;
+    color: #d9b8d0;
+    font-size: 12px;
+}
+
+@media(max-width: 600px) {
+    .top-label {
+        letter-spacing: 4px;
+        font-size: 10px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .wish-message {
+        font-size: 13px;
+    }
+
+    .diya {
+        font-size: 27px;
+    }
+
+    .content {
+        padding: 20px 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<canvas id="fireworks"></canvas>
+
+<!-- FLOATING DIYAS -->
+
+<div class="diya left">🪔</div>
+<div class="diya right">🪔</div>
+<div class="diya bottom-left">🪔</div>
+<div class="diya bottom-right">🪔</div>
+
+<!-- RANGOLI -->
+
+<div class="rangoli"></div>
+
+<!-- MAIN CONTENT -->
+
+<div class="container">
+
+<div class="content">
+
+    <div class="top-label">
+        ✨ THE FESTIVAL OF LIGHTS ✨
+    </div>
+
+    <h1 class="main-title">Happy Diwali</h1>
+
+    <p class="subtitle">
+        A festival of lights, love, happiness and new beginnings ❤️
+    </p>
+
+    <!-- NAME ENTRY -->
+
+    <div id="entry">
+
+        <div class="lamp">🪔</div>
+
+        <p class="entry-text">
+            Someone special deserves a special wish...
+        </p>
+
+        
+<form id="wishForm">
+
+    <input
+        type="text"
+        id="userName"
+        placeholder="Enter Your Beautiful Name..."
+        maxlength="35"
+        autocomplete="off"
+        required
+    >
+
+    <button type="submit" class="submit-btn">
+        SUBMIT ✨
+    </button>
+
+    <p class="hint">
+        Enter your name & click to reveal your surprise ❤️
+    </p>
+
+</form>
+
+
+    </div>
+
+    <!-- PERSONALIZED WISH -->
+
+    <div id="surprise">
+
+        <div class="lamp">🪔</div>
+
+        <h2 class="wish-title">
+            Happy Diwali
+        </h2>
+
+        <div class="personal-name" id="showName"></div>
+
+        <p class="wish-message">
+            Mere Tumhare Sabke Liye Happy Diwali! ❤️
+            <br><br>
+
+            May your life shine as bright as the
+            beautiful lights of Diwali.
+
+            <br>
+
+            May happiness fill your home,
+            success follow your dreams,
+            and love surround you always.
+
+            <br><br>
+
+            Wishing you and your family
+            endless joy, prosperity and beautiful memories.
+
+            <br><br>
+
+            Have a Magical & Beautiful Diwali! ✨
+        </p>
+
+        <div class="flower">
+            🌸 🪔 🌸
+        </div>
+
+        <p class="song-info">
+            ♫ NOW PLAYING — HAPPY DIWALI 🎶
+        </p>
+
+    </div>
+
+    <div class="footer">
+        Made with ❤️ & lots of festive wishes
+    </div>
+
+</div>
+</div>
+
+<!-- BACKGROUND SONG -->
+
+<audio id="diwaliSong" loop preload="auto">
+    <source src="./diwali.mp4">
+</audio>
+
+<script>
+
+// GET HTML ELEMENTS
+
+const form = document.getElementById("wishForm");
+const input = document.getElementById("userName");
+const entry = document.getElementById("entry");
+const surprise = document.getElementById("surprise");
+const showName = document.getElementById("showName");
+const song = document.getElementById("diwaliSong");
+
+// PERSONALIZED WISH
+
+form.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name = input.value.trim();
+
+    if (name === "") {
+        alert("Please enter your name!");
+        return;
+    }
+
+    showName.textContent = "Dear " + name + " ❤️";
+
+    entry.style.display = "none";
+    surprise.style.display = "block";
+
+    // PLAY BACKGROUND MUSIC
+
+    song.volume = 0.7;
+
+    song.play().catch(function(error) {
+        console.log("Song Error:", error);
+        alert("Please check your song file format and name.");
+    });
+
+    // START FIREWORKS
+
+    startFireworks();
+
+});
+
+// FIREWORKS ANIMATION
+
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+let fireworksStarted = false;
+
+function resizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+function createFirework() {
+
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight * 0.65;
+
+    const colors = [
+        "#ffd700",
+        "#ff9f43",
+        "#ff5e78",
+        "#ffffff",
+        "#d99cff"
+    ];
+
+    const color = colors[
+        Math.floor(Math.random() * colors.length)
+    ];
+
+    for (let i = 0; i < 55; i++) {
+
+        const angle = Math.PI * 2 * i / 55;
+        const speed = Math.random() * 3 + 1;
+
+        particles.push({
+            x: x,
+            y: y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            life: 90,
+            color: color,
+            size: Math.random() * 2 + 1
+        });
+    }
+}
+
+function animateFireworks() {
+
+    ctx.clearRect(
+        0, 0,
+        window.innerWidth,
+        window.innerHeight
+    );
+
+    particles.forEach((p, index) => {
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        p.vy += 0.025;
+        p.life--;
+
+        ctx.globalAlpha = Math.max(0, p.life / 90);
+
+        ctx.fillStyle = p.color;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = p.color;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.size,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+
+        if (p.life <= 0) {
+            particles.splice(index, 1);
+        }
+
+    });
+
+    ctx.globalAlpha = 1;
+    ctx.shadowBlur = 0;
+
+    requestAnimationFrame(animateFireworks);
+}
+
+animateFireworks();
+
+function startFireworks() {
+
+    if (fireworksStarted) return;
+
+    fireworksStarted = true;
+
+    createFirework();
+
+    setInterval(function() {
+
+        createFirework();
+
+    }, 650);
+
+}
+
+</script>
+
+</body>
+</html>
